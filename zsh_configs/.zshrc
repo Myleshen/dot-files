@@ -5,7 +5,7 @@ DISABLE_UPDATE_PROMPT="true"
 export UPDATE_ZSH_DAYS=2
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git z per-directory-history vi-mode copyfile dirhistory colored-man-pages common-aliases copydir fzf gitignore jsontools zsh-interactive-cd history zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git z copyfile colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # ZSH End
@@ -31,6 +31,13 @@ else
 fi
 unset __conda_setup
 # Conda End
+
+# NVM Start
+export NVM_DIR="$HOME/.nvm"                        
+  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+# NVM End
+
 
 # Spaceship Prompt
 # Order
@@ -78,4 +85,3 @@ SPACESHIP_BATTERY_SHOW=always
 # Exit Code
 SPACESHIP_EXIT_CODE_SHOW=true
 # Spaceship Prompt End
-
