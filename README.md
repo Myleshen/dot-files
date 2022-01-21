@@ -1,12 +1,20 @@
 # First Take on creating DotFiles for Linux
 
-Commands to execute to get the dotfiles up for .zshrc
+>
+> Commands to execute to get the dotfiles up for .zshrc
+>
 
 ## Basic Setup
 
 ## Run command to setup zshrc
 
 ln -s .config/zsh_configs/.zshrc .zshrc
+
+## Install Oh-My-Zsh
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
 ## Homebrew
 
