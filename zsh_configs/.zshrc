@@ -32,6 +32,10 @@ fi
 unset __conda_setup
 # Conda End
 
+# Homebrew Start
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Homebrew End
+
 # NVM Start
 export NVM_DIR="$HOME/.nvm"                        
   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
