@@ -85,3 +85,7 @@ SPACESHIP_BATTERY_SHOW=always
 # Exit Code
 SPACESHIP_EXIT_CODE_SHOW=true
 # Spaceship Prompt End
+
+# HomeBrew Start
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# HomeBrew End
