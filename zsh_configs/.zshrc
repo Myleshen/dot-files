@@ -93,3 +93,9 @@ SPACESHIP_EXIT_CODE_SHOW=true
 # HomeBrew Start
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # HomeBrew End
+
+# Mysql Start
+export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
+export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/mysql@5.7/lib"
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/mysql@5.7/include"
+# Mysql End

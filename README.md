@@ -37,6 +37,18 @@ curl https://rclone.org/install.sh | sudo bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null
 ```
 
+### Mysql
+
+```shell
+brew install mysql@5.7
+```
+
+### Pip3
+
+```shell
+sudo apt-get install pip3
+```
+
 ### Zsh Plugins
 
 sudo apt-get install -y fzf  
@@ -49,7 +61,12 @@ git clone <https://github.com/zsh-users/zsh-syntax-highlighting.git> $ZSH/plugin
 brew install neovim
 ```
 
+### Neovim Python Plugin
+
+```shell
+pip3 install neovim
+```
+
 Todo's
 
-- Neovim
 - tmux
