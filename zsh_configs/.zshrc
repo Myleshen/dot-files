@@ -1,20 +1,24 @@
 # ZSH Configs
 export ZSH="/home/myleshen/.oh-my-zsh"
-ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT="true"
 export UPDATE_ZSH_DAYS=2
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git z copyfile colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git z colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # ZSH End
 
+# Powerlevel 10K Theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # Aliases Start
 alias v="nvim"
 alias vi="nvim"
-alias config_zsh="nvim ~/.zshrc"
-alias source_zsh="source ~/.zshrc"
+alias vim="nvim"
+alias vzsh="nvim ~/.zshrc"
 # Aliases End
 
 
@@ -32,70 +36,12 @@ fi
 unset __conda_setup
 # Conda End
 
-# Homebrew Start
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# Homebrew End
-
 # NVM Start
 export NVM_DIR="$HOME/.nvm"                        
   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
 # NVM End
 
-
-# Spaceship Prompt
-# Order
-SPACESHIP_PROMPT_ORDER=(
-	host
-	dir
-	git
-	char
-)
-SPACESHIP_RPROMPT_ORDER=(
-	exit_code
-	exec_time
-	node
-	docker
-	conda
-	gradle
-	maven
-	jobs
-	battery
-	time
-)
-# Colour
-TIME_COLOUR=WHITE
-
-# Prompt
-SPACESHIP_PROMPT_PREFIXES_SHOW=false
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=true
-
-# Directory
-SPACESHIP_DIR_PREFIX=""
-
-# Time
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_TIME_FORMAT=%T::%D
-SPACESHIP_TIME_COLOR=TIME_COLOR
-SPACESHIP_TIME_PREFIX="Now:"
-SPACESHIP_TIME_SUFFIX=""
-# User
-SPACESHIP_USER_SHOW=always
-
-# Battery
-SPACESHIP_BATTERY_SHOW=always
-
-# Exit Code
-SPACESHIP_EXIT_CODE_SHOW=true
-# Spaceship Prompt End
-
 # HomeBrew Start
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # HomeBrew End
-
-# Mysql Start
-export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
-export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/mysql@5.7/lib"
-export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/mysql@5.7/include"
-# Mysql End
