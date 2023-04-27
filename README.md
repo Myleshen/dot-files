@@ -6,6 +6,12 @@
 
 ## Basic Setup
 
+### Install Zsh
+
+```shell
+sudo apt install zsh
+```
+
 ### Install Oh-My-Zsh
 
 ```shell
@@ -15,15 +21,20 @@
 ### Run command to setup zshrc
 
 ```shell
+rm -f ~/.zshrc
 ln -s .config/zsh_configs/.zshrc .zshrc
 ```
-
-### Install Spaceship Prompt
+### Install Powerlevel10k Theme
 
 ```shell
-git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
+### Zsh Plugins
+
+sudo apt-get install -y fzf  
+git clone <https://github.com/zsh-users/zsh-autosuggestions.git> $ZSH/plugins/zsh-autosuggestions  
+git clone <https://github.com/zsh-users/zsh-syntax-highlighting.git> $ZSH/plugins/zsh-syntax-highlighting
+
 
 ### Install Rclone
 
@@ -37,7 +48,7 @@ curl https://rclone.org/install.sh | sudo bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null
 ```
 
-### Mysql
+### MySQL
 
 ```shell
 brew install mysql@5.7
@@ -48,12 +59,6 @@ brew install mysql@5.7
 ```shell
 sudo apt-get install pip3
 ```
-
-### Zsh Plugins
-
-sudo apt-get install -y fzf  
-git clone <https://github.com/zsh-users/zsh-autosuggestions.git> $ZSH/plugins/zsh-autosuggestions  
-git clone <https://github.com/zsh-users/zsh-syntax-highlighting.git> $ZSH/plugins/zsh-syntax-highlighting
 
 ### Neovim
 
@@ -66,7 +71,17 @@ brew install neovim
 ```shell
 pip3 install neovim
 ```
+### Tmux
+
+```shell
+sudo apt install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+>
+> Inside tmux for the first time use (prefix) <Ctrl+Space> + I to install all the plugins
+> Reference: https://tmuxcheatsheet.com/ 
 
 Todo's
 
-- tmux
+- neovim config
+- tmux config

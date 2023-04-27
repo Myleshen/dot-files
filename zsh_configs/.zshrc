@@ -1,5 +1,9 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ZSH Configs
-export ZSH="/home/myleshen/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT="true"
 export UPDATE_ZSH_DAYS=2
@@ -20,21 +24,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias vzsh="nvim ~/.zshrc"
 # Aliases End
-
-
-# Conda Start
-__conda_setup="$('/home/myleshen/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "/home/myleshen/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "/home/myleshen/miniconda3/etc/profile.d/conda.sh"
-  else
-    export PATH="/home/myleshen/miniconda3/bin:$PATH"
-  fi
-fi
-unset __conda_setup
-# Conda End
 
 # NVM Start
 export NVM_DIR="$HOME/.nvm"                        
