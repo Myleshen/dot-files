@@ -9,7 +9,7 @@ DISABLE_UPDATE_PROMPT="true"
 export UPDATE_ZSH_DAYS=2
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git z colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(asdf git z colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # ZSH End
@@ -19,10 +19,12 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Aliases Start
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias vzsh="nvim ~/.zshrc"
+alias v="lvim"
+alias vi="lvim"
+alias vim="lvim"
+alias vzsh="lvim ~/.zshrc"
+alias pi="ssh myleshen@192.168.0.252"
+alias dell="ssh myleshen@192.168.0.5"
 # Aliases End
 
 # NVM Start
@@ -33,4 +35,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # HomeBrew Start
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH=/usr/local/bin:$PATH
 # HomeBrew End
+export PATH=/home/myleshen/.local/bin:$PATH
