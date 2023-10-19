@@ -19,6 +19,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Aliases Start
+alias ls="exa --icons"
+alias la="exa --icons -la"
 alias v="lvim"
 alias vi="lvim"
 alias vim="lvim"
