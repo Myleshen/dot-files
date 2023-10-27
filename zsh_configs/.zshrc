@@ -20,7 +20,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases Start
 alias ls="exa --icons"
-alias la="exa --icons -la"
+alias la="exa --icons -a"
 alias v="lvim"
 alias vi="lvim"
 alias vim="lvim"
