@@ -1,0 +1,27 @@
+# We use Alacritty's default Linux config directory as our storage location here.
+# mkdir -p ~/.config/alacritty/themes
+# git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
+
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+bold.family = "JetBrainsMono Nerd Font"
+italic.family = "JetBrainsMono Nerd Font"
+bold_italic.family = "JetBrainsMono Nerd Font"
+
+size = 20
+
+[window]
+decorations = "None"
+padding.x = 5
+padding.y = 5
+
+[cursor.style]
+shape = "Beam"
+blinking = "Always"
+
+[shell]
+program = "/usr/local/bin/tmux"
+args = ["new-session", "-A", "-s", "default"]
+
