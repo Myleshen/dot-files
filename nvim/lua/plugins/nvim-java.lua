@@ -8,6 +8,7 @@ return {
     "MunifTanjim/nui.nvim",
     "neovim/nvim-lspconfig",
     "mfussenegger/nvim-dap",
+    "rcarriga/cmp-dap",
     {
       "williamboman/mason.nvim",
       opts = {
