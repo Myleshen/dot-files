@@ -5,7 +5,7 @@ require("dapui").setup()
 
 require("lualine").setup({
   options = {
-    theme = "horizon",
+    theme = "tokyonight",
   },
 })
 

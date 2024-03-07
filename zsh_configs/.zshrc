@@ -31,23 +31,33 @@ alias zettle="nvim $HOME/Zettelkasten"
 # Aliases End
 
 # NVM Start
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+# Added for macos
+if [[ "$OSTYPE" == "darwin"* ]] then
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+else
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
 # NVM End
 
 # Neovim PATH
 export PATH=$HOME/local/nvim/bin:$PATH
 
 # HomeBrew Start
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Added for macos
+if [[ "$OSTYPE" == "darwin"* ]] then
+  eval "$(/usr/local/bin/brew shellenv)"
+else
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 export PATH=/usr/local/bin:$PATH
 # HomeBrew End
+
 export PATH=/home/myleshen/.local/bin:$PATH
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
-
-# Setup GOROOT for Golang
-. ~/.asdf/plugins/golang/set-env.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -66,7 +76,6 @@ unset __conda_setup
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-
 # Rust Source
 export PATH=$HOME/.cargo/bin:$PATH
 
@@ -80,3 +89,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+PATH=~/.console-ninja/.bin:$PATH
