@@ -7,9 +7,22 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT="true"
 export UPDATE_ZSH_DAYS=2
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
 HIST_STAMPS="mm/dd/yyyy"
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
-plugins=(asdf git z colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting poetry)
+plugins=(git colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting poetry)
+
+# Language Support
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
 
 source $ZSH/oh-my-zsh.sh
 # ZSH End
@@ -19,8 +32,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Aliases Start
-alias ls="exa --icons"
-alias la="exa --icons -a"
+alias ls="eza --color=always --git --no-filesize --icons=always"
+alias la="ls -la"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
@@ -28,23 +41,8 @@ alias vzsh="nvim ~/.zshrc"
 alias pi="ssh myleshen@192.168.0.252"
 alias dell="ssh myleshen@192.168.0.5"
 alias zettle="nvim $HOME/Zettelkasten"
+alias tmux="tmux -u"
 # Aliases End
-
-# NVM Start
-# Added for macos
-if [[ "$OSTYPE" == "darwin"* ]] then
-  export NVM_DIR="$HOME/.nvm"
-    [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-else
-  export NVM_DIR="$HOME/.nvm"
-    [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-    [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
-fi
-# NVM End
-
-# Neovim PATH
-export PATH=$HOME/local/nvim/bin:$PATH
 
 # HomeBrew Start
 # Added for macos
@@ -56,8 +54,48 @@ fi
 export PATH=/usr/local/bin:$PATH
 # HomeBrew End
 
-export PATH=/home/myleshen/.local/bin:$PATH
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+# bat
+export BAT_THEME=tokyonight_night
+
+# Use FD
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+} 
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+# fzf
+eval "$(fzf --zsh)"
+
+source ~/Software/fzf-git.sh/fzf-git.sh
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+
+alias cd="z"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -76,8 +114,28 @@ unset __conda_setup
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+# asdf
+. /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
+
 # Rust Source
 export PATH=$HOME/.cargo/bin:$PATH
+. "$HOME/.cargo/env"
+
+# NVM Start
+# Added for macos
+if [[ "$OSTYPE" == "darwin"* ]] then
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+else
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
+# NVM End
+
+# Neovim PATH
+export PATH=$HOME/local/nvim/bin:$PATH
 
 # bun completions
 [ -s "/home/myleshen/.bun/_bun" ] && source "/home/myleshen/.bun/_bun"
@@ -89,5 +147,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-PATH=~/.console-ninja/.bin:$PATH
