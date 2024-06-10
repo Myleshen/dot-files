@@ -34,6 +34,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases Start
 alias ls="eza --color=always --git --no-filesize --icons=always"
 alias la="ls -la"
+alias cd="z"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
@@ -42,12 +43,13 @@ alias pi="ssh myleshen@192.168.0.252"
 alias dell="ssh myleshen@192.168.0.5"
 alias zettle="nvim $HOME/Zettelkasten"
 alias tmux="tmux -u"
+alias bloompull="/Users/mprab01/OneDrive/Learning/Scripts/gitpull.sh /Users/mprab01/Bloom/Repos"
 # Aliases End
 
 # HomeBrew Start
 # Added for macos
 if [[ "$OSTYPE" == "darwin"* ]] then
-  eval "$(/usr/local/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
@@ -90,12 +92,13 @@ _fzf_comprun() {
 # fzf
 eval "$(fzf --zsh)"
 
-source ~/Software/fzf-git.sh/fzf-git.sh
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  source ~/Software/fzf-git.sh/fzf-git.sh
+fi
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 
-alias cd="z"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -115,11 +118,15 @@ unset __conda_setup
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # asdf
-. /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
+fi
 
 # Rust Source
-export PATH=$HOME/.cargo/bin:$PATH
-. "$HOME/.cargo/env"
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  export PATH=$HOME/.cargo/bin:$PATH
+  . "$HOME/.cargo/env"
+fi
 
 # NVM Start
 # Added for macos
