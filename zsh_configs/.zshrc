@@ -21,8 +21,9 @@ bindkey "^[[B" history-search-forward
 plugins=(git colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting poetry)
 
 # Language Support
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
+export LC_CTYPE=UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 source $ZSH/oh-my-zsh.sh
 # ZSH End
