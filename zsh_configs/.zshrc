@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Aliases Start
-alias ls="eza --color=always --git --no-filesize --icons=always"
+alias ls="eza --color=always --git --icons=always"
 alias la="ls -la"
 alias cd="z"
 alias v="nvim"
