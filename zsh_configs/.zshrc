@@ -44,8 +44,10 @@ alias pi="ssh myleshen@192.168.0.252"
 alias dell="ssh myleshen@192.168.0.5"
 alias zettle="nvim $HOME/Zettelkasten"
 alias tmux="tmux -u"
-alias bloompull="/Users/mprab01/OneDrive/Learning/Scripts/gitpull.sh /Users/mprab01/Bloom/Repos"
 # Aliases End
+
+# Local Bin PATH
+export PATH="$HOME/.local/bin":$PATH
 
 # HomeBrew Start
 # Added for macos
@@ -92,9 +94,10 @@ _fzf_comprun() {
 
 # fzf
 eval "$(fzf --zsh)"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 if [[ ! "$OSTYPE" == "darwin"* ]] then
-  source ~/Software/fzf-git.sh/fzf-git.sh
+  source ~/softwares/fzf-git.sh
 fi
 
 # ---- Zoxide (better cd) ----
@@ -116,7 +119,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # asdf
 if [[ ! "$OSTYPE" == "darwin"* ]] then
@@ -145,13 +147,3 @@ fi
 # Neovim PATH
 export PATH=$HOME/local/nvim/bin:$PATH
 
-# bun completions
-[ -s "/home/myleshen/.bun/_bun" ] && source "/home/myleshen/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

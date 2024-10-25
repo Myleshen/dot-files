@@ -1,6 +1,7 @@
 # We use Alacritty's default Linux config directory as our storage location here.
 # mkdir -p ~/.config/alacritty/themes
 # git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+[general]
 import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
 
 [env]
@@ -25,6 +26,6 @@ padding.y = 5
 shape = "Beam"
 blinking = "Always"
 
-[shell]
+[terminal.shell]
 program = "/usr/local/bin/tmux"
 args = ["new-session", "-A", "-s", "default"]
