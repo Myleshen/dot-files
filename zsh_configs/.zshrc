@@ -18,7 +18,10 @@ setopt hist_verify
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
-plugins=(git colored-man-pages common-aliases fzf gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting poetry)
+plugins=(git colored-man-pages common-aliases gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting)
+
+# Shell Variables
+EDITOR=nvim
 
 # Language Support
 export LC_CTYPE=UTF-8
@@ -62,39 +65,20 @@ export PATH=/usr/local/bin:$PATH
 # bat
 export BAT_THEME=tokyonight_night
 
-# Use FD
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
-
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-} 
-
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-  esac
-}
-
 # fzf
 eval "$(fzf --zsh)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  export FZF_BASE="/home/linuxbrew/.linuxbrew/bin/fzf"
+fi
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 if [[ ! "$OSTYPE" == "darwin"* ]] then
   source ~/softwares/fzf-git.sh
@@ -119,11 +103,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-# asdf
-if [[ ! "$OSTYPE" == "darwin"* ]] then
-  . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
-fi
 
 # Rust Source
 if [[ ! "$OSTYPE" == "darwin"* ]] then

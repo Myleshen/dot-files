@@ -21,8 +21,7 @@ sudo apt install zsh
 ### Run command to setup zshrc
 
 ```shell
-rm -f ~/.zshrc
-ln -s .config/zsh_configs/.zshrc .zshrc
+rm -f ~/.zshrc && ln -s .config/zsh_configs/.zshrc .zshrc
 ```
 ### Install Powerlevel10k Theme
 
@@ -31,16 +30,12 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 ```
 ### Zsh Plugins
 
+```shell
 sudo apt-get install -y fzf  
 git clone <https://github.com/zsh-users/zsh-autosuggestions.git> $ZSH/plugins/zsh-autosuggestions  
 git clone <https://github.com/zsh-users/zsh-syntax-highlighting.git> $ZSH/plugins/zsh-syntax-highlighting
-
-
-### Install Rclone
-
-```shell
-curl https://rclone.org/install.sh | sudo bash
 ```
+
 
 ### Homebrew
 
@@ -82,6 +77,3 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 > Reference: https://tmuxcheatsheet.com/ 
 
 Todo's
-
-- neovim config
-- tmux config
