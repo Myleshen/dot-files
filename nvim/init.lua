@@ -3,7 +3,7 @@ require("config.lazy")
 
 require("lualine").setup({
   options = {
-    theme = "tokyonight",
+    theme = "horizon",
   },
 })
 
