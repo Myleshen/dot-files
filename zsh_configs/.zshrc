@@ -21,7 +21,9 @@ bindkey "^[[B" history-search-forward
 plugins=(git colored-man-pages common-aliases gitignore jsontools zsh-interactive-cd history sudo zsh-autosuggestions zsh-syntax-highlighting)
 
 # Shell Variables
-EDITOR=nvim
+export EDITOR=nvim
+export KUBE_EDITOR=nvim
+export K9S_EDITOR=nvim
 
 # Language Support
 export LC_CTYPE=UTF-8
@@ -73,8 +75,9 @@ if [[ ! "$OSTYPE" == "darwin"* ]] then
   export FZF_BASE="/home/linuxbrew/.linuxbrew/bin/fzf"
 fi
 
-# asdf
+# source ASDF
 . "$HOME/.asdf/asdf.sh"
+
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
@@ -87,21 +90,31 @@ fi
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/myleshen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/myleshen/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/myleshen/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/myleshen/miniconda3/bin:$PATH"
-    fi
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  __conda_setup="$('/home/myleshen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/home/myleshen/miniconda3/etc/profile.d/conda.sh" ]; then
+          . "/home/myleshen/miniconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/home/myleshen/miniconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+else 
+  __conda_setup="$('/Users/mpraburam/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/Users/mpraburam/miniconda3/etc/profile.d/conda.sh" ]; then
+          . "/Users/mpraburam/miniconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/Users/mpraburam/miniconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 
 # Rust Source
@@ -126,3 +139,14 @@ fi
 # Neovim PATH
 export PATH=$HOME/local/nvim/bin:$PATH
 
+# Custom Scripts
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  export PATH="/home/myleshen/scripts:$PATH"
+else 
+  export PATH="/Users/mpraburam/scripts:$PATH"
+fi
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
