@@ -10,6 +10,7 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+<<<<<<< HEAD
     { import = "lazyvim.plugins.extras.ai.codeium" },
     { import = "lazyvim.plugins.extras.coding.blink" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
@@ -34,6 +35,10 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     { import = "lazyvim.plugins.extras.util.dot" },
 
+=======
+    -- import any extras modules here
+    -- import/override with your plugins
+>>>>>>> a09f597 (Update nvim config)
     { import = "plugins" },
   },
   defaults = {

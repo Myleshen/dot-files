@@ -7,6 +7,7 @@ require("lualine").setup({
   },
 })
 
+<<<<<<< HEAD
 require("telescope").setup({
   defaults = {
     file_ignore_patterns = {
@@ -36,3 +37,5 @@ require("toggleterm").setup({
   auto_scroll = true,
   direction = "horizontal",
 })
+=======
+>>>>>>> a09f597 (Update nvim config)

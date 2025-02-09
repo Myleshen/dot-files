@@ -2,8 +2,15 @@
   "extras": [
 
   ],
+  "install_version": 7,
   "news": {
+<<<<<<< HEAD
     "NEWS.md": "7429"
   },
   "version": 7
+=======
+    "NEWS.md": "10960"
+  },
+  "version": 8
+>>>>>>> a09f597 (Update nvim config)
 }
