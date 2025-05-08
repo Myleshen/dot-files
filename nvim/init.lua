@@ -7,17 +7,6 @@ require("lualine").setup({
   },
 })
 
-require("telescope").setup({
-  defaults = {
-    file_ignore_patterns = {
-      "node_modules",
-      ".git",
-      ".idea",
-      ".vscode",
-    },
-  },
-})
-
 require("toggleterm").setup({
   size = function(term)
     if term.direction == "horizontal" then
