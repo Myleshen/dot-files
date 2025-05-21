@@ -24,4 +24,8 @@ require("toggleterm").setup({
   close_on_exit = true,
   auto_scroll = true,
   direction = "horizontal",
+
+  require("catppuccin").setup({
+    vim.cmd.colorscheme("catppuccin-mocha"),
+  }),
 })
