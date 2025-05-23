@@ -24,8 +24,17 @@ require("toggleterm").setup({
   close_on_exit = true,
   auto_scroll = true,
   direction = "horizontal",
-
-  require("catppuccin").setup({
-    vim.cmd.colorscheme("catppuccin-mocha"),
-  }),
 })
+
+-- require("catppuccin").setup({
+--   vim.cmd.colorscheme("catppuccin-mocha"),
+-- })
+
+function TransparentBg(color)
+  color = color or "tokyonight"
+  vim.cmd.colorscheme(color)
+  vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+end
+
+TransparentBg("catppuccin-mocha")

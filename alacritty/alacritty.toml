@@ -1,8 +1,8 @@
 # We use Alacritty's default Linux config directory as our storage location here.
 # mkdir -p ~/.config/alacritty/themes
 # git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
-[general]
-import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
+# [general]
+# import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -13,19 +13,22 @@ bold.family = "JetBrainsMono Nerd Font"
 italic.family = "JetBrainsMono Nerd Font"
 bold_italic.family = "JetBrainsMono Nerd Font"
 
-size = 18
+size = 14
 
 [window]
 decorations = "None"
-opacity = 0.8
+opacity = 0.0
 blur = true
 padding.x = 5
 padding.y = 5
+
+[colors]
+transparent_background_colors = true
 
 [cursor.style]
 shape = "Beam"
 blinking = "Always"
 
 [terminal.shell]
-program = "/opt/homebrew/bin/tmux"
+program = "/usr/bin/tmux"
 args = ["new-session", "-A", "-s", "default"]
