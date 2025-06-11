@@ -146,6 +146,12 @@ else
   export PATH="/Users/mpraburam/scripts:$PATH"
 fi
 
-# ASDF Java
-. ~/.asdf/plugins/java/set-java-home.zsh
+if [[ "$OSTYPE" == "darwin"* ]] then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
