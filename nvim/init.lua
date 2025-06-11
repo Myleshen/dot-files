@@ -26,15 +26,4 @@ require("toggleterm").setup({
   direction = "horizontal",
 })
 
--- require("catppuccin").setup({
---   vim.cmd.colorscheme("catppuccin-mocha"),
--- })
-
-function TransparentBg(color)
-  color = color or "tokyonight"
-  vim.cmd.colorscheme(color)
-  vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-end
-
-TransparentBg("catppuccin-mocha")
+vim.g.augment_workspace_folders = { "$HOME/Security/Repos/" }
