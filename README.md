@@ -23,11 +23,13 @@ sudo apt install zsh
 ```shell
 rm -f ~/.zshrc && ln -s .config/zsh_configs/.zshrc .zshrc
 ```
+
 ### Install Powerlevel10k Theme
 
 ```shell
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
+
 ### Zsh Plugins
 
 ```shell
@@ -35,7 +37,6 @@ sudo apt-get install -y fzf
 git clone <https://github.com/zsh-users/zsh-autosuggestions.git> $ZSH/plugins/zsh-autosuggestions  
 git clone <https://github.com/zsh-users/zsh-syntax-highlighting.git> $ZSH/plugins/zsh-syntax-highlighting
 ```
-
 
 ### Homebrew
 
@@ -66,14 +67,38 @@ brew install neovim
 ```shell
 pip3 install neovim
 ```
+
 ### Tmux
 
 ```shell
 sudo apt install tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Create a sym link to /usr/local/bin to make sure compatability exists with both Macos & Linux
+ln -s $(where tmux) /usr/local/bin/tmux
+
 ```
 >
 > Inside tmux for the first time use (prefix) <Ctrl+Space> + I to install all the plugins
-> Reference: https://tmuxcheatsheet.com/ 
+> Reference: <https://tmuxcheatsheet.com/>
+
+### Stow
+
+- Simple ln
+
+```shell
+brew install stow
+
+stow . -t ~/.config/ # Run this command in the root directory of this project to create symlink for all the apps to the .config folder
+```
+
+### BatCat
+
+- Cat with Colours
+
+```shell
+brew install bat #Need to see if it is bat / batcat in linux
+add alias cat='batcat' # If it is bat then no issues, but if not need to add it in using the if condition based on the OS
+```
 
 Todo's

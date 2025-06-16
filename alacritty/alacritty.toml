@@ -30,5 +30,5 @@ shape = "Beam"
 blinking = "Always"
 
 [terminal.shell]
-program = "/usr/bin/tmux"
+program = "/usr/local/bin/tmux"
 args = ["new-session", "-A", "-s", "default"]

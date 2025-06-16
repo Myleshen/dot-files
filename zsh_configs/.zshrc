@@ -41,6 +41,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls="eza --color=always --git --icons=always"
 alias la="ls -la"
 alias cd="z"
+alias cat="bat"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
@@ -65,7 +66,7 @@ export PATH=/usr/local/bin:$PATH
 # HomeBrew End
 
 # bat
-export BAT_THEME=tokyonight_night
+export BAT_THEME="Catppuccin Macchiato"
 
 # fzf
 eval "$(fzf --zsh)"
