@@ -34,11 +34,11 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom
 
 # Use xrandr to set up the display config
-exec xrandr --output HDMI-0 --rotate left --auto --left-of DP-0
 exec xrandr --output DP-0 --primary
+exec xrandr --output HDMI-0 --rotate left --auto --left-of DP-0
 
 # Set Wallpaper
-exec hsetroot -cover ~/wallpaper.jpg
+exec_always feh --bg-fill ~/dot-files/i3/wallpaper.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

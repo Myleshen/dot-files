@@ -78,6 +78,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s $(where tmux) /usr/local/bin/tmux
 
 ```
+<<<<<<< Updated upstream
 >
 > Inside tmux for the first time use (prefix) <Ctrl+Space> + I to install all the plugins
 > Reference: <https://tmuxcheatsheet.com/>
@@ -100,5 +101,31 @@ stow . -t ~/.config/ # Run this command in the root directory of this project to
 brew install bat #Need to see if it is bat / batcat in linux
 add alias cat='batcat' # If it is bat then no issues, but if not need to add it in using the if condition based on the OS
 ```
+=======
+>>>>>>> Stashed changes
 
-Todo's
+### Playerctl
+
+- This is used to control the audio output of the system
+
+```shell
+sudo apt install playerctl -y
+
+### Polybar
+
+- This is used to display the system information
+
+```shell
+sudo apt install polybar -y
+```
+
+> Inside tmux for the first time use prefix + I to install all the plugins
+> Tmux config reload: prefix + r
+> Reference: <https://tmuxcheatsheet.com/>
+
+> Note: Tried kanata for a while and it seems it is not working well for my usecases, might need to look into it again after sometime
+
+Todo's:
+
+- Document other applications that are required
+-
