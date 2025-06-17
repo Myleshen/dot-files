@@ -25,5 +25,3 @@ require("toggleterm").setup({
   auto_scroll = true,
   direction = "horizontal",
 })
-
-vim.g.augment_workspace_folders = { "$HOME/Security/Repos/" }
