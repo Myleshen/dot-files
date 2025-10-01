@@ -1,3 +1,5 @@
+general.import = ["~/.config/omarchy/current/theme/alacritty.toml"]
+
 [env]
 TERM = "xterm-256color"
 
@@ -7,17 +9,20 @@ bold.family = "JetBrainsMono Nerd Font"
 italic.family = "JetBrainsMono Nerd Font"
 bold_italic.family = "JetBrainsMono Nerd Font"
 
-size = 14
+size = 12
 
 [window]
 decorations = "None"
-opacity = 0.3
+opacity = 0.80
 blur = true
 padding.x = 5
 padding.y = 5
 
 [colors]
 transparent_background_colors = true
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 
 [cursor.style]
 shape = "Beam"

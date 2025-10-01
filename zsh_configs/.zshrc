@@ -77,16 +77,13 @@ if [[ ! "$OSTYPE" == "darwin"* ]] then
 fi
 
 # source ASDF
-# . "$HOME/.asdf/asdf.sh"
+# Installed using AUR
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
-if [[ ! "$OSTYPE" == "darwin"* ]] then
-  source ~/softwares/fzf-git.sh
-fi
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
@@ -118,11 +115,11 @@ else
 fi
 
 
-# Rust Source
-if [[ ! "$OSTYPE" == "darwin"* ]] then
-  export PATH=$HOME/.cargo/bin:$PATH
-  . "$HOME/.cargo/env"
-fi
+# # Rust Source
+# if [[ ! "$OSTYPE" == "darwin"* ]] then
+#   export PATH=$HOME/.cargo/bin:$PATH
+#   . "$HOME/.cargo/env"
+# fi
 
 # NVM Start
 # Added for macos
@@ -141,11 +138,8 @@ fi
 export PATH=$HOME/local/nvim/bin:$PATH
 
 # Custom Scripts
-if [[ ! "$OSTYPE" == "darwin"* ]] then
-  export PATH="/home/myleshen/scripts:$PATH"
-else 
-  export PATH="/Users/mpraburam/scripts:$PATH"
-fi
+# The reason for adding this in the first is to use my scripts rather than the ones builtin if collision occurs
+export PATH="$HOME/scripts:$PATH"
 
 if [[ "$OSTYPE" == "darwin"* ]] then
   export JAVA_HOME="$(/usr/libexec/java_home)"
@@ -156,3 +150,10 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/myleshen/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# Source UV
+source "$HOME/.local/share/../bin/env"
