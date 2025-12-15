@@ -154,6 +154,3 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/myleshen/.lmstudio/bin"
 # End of LM Studio CLI section
-
-# Source UV
-source "$HOME/.local/share/../bin/env"
