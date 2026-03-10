@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/myleshen/.oh-my-zsh/custom/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -47,9 +54,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias vzsh="nvim ~/.zshrc"
 alias pi="ssh myleshen@192.168.0.252"
-alias dell="ssh myleshen@192.168.0.5"
+alias rog="ssh root@192.168.0.200"
 alias zettle="nvim $HOME/Zettelkasten"
-alias tmux="tmux -u"
 # Aliases End
 
 # Local Bin PATH
@@ -88,38 +94,25 @@ autoload -Uz compinit && compinit
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 
-if [[ ! "$OSTYPE" == "darwin"* ]] then
-  __conda_setup="$('/home/myleshen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "/home/myleshen/miniconda3/etc/profile.d/conda.sh" ]; then
-          . "/home/myleshen/miniconda3/etc/profile.d/conda.sh"
-      else
-          export PATH="/home/myleshen/miniconda3/bin:$PATH"
-      fi
-  fi
-  unset __conda_setup
-else 
-  __conda_setup="$('/Users/mpraburam/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "/Users/mpraburam/miniconda3/etc/profile.d/conda.sh" ]; then
-          . "/Users/mpraburam/miniconda3/etc/profile.d/conda.sh"
-      else
-          export PATH="/Users/mpraburam/miniconda3/bin:$PATH"
-      fi
-  fi
-  unset __conda_setup
+# Conda Init
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+# . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"  # commented out by conda initialize
+    else
+# export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"  # commented out by conda initialize
+    fi
 fi
-
+unset __conda_setup
+# Conda End
 
 # # Rust Source
-# if [[ ! "$OSTYPE" == "darwin"* ]] then
-#   export PATH=$HOME/.cargo/bin:$PATH
-#   . "$HOME/.cargo/env"
-# fi
+if [[ ! "$OSTYPE" == "darwin"* ]] then
+  export PATH=$HOME/.cargo/bin:$PATH
+  . "$HOME/.cargo/env"
+fi
 
 # NVM Start
 # Added for macos
@@ -154,3 +147,9 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/myleshen/.lmstudio/bin"
 # End of LM Studio CLI section
+
+# Added by Antigravity
+export PATH="/Users/myleshen/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/myleshen/.antigravity/antigravity/bin:$PATH"
