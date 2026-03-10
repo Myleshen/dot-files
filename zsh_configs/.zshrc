@@ -56,6 +56,9 @@ alias vzsh="nvim ~/.zshrc"
 alias pi="ssh myleshen@192.168.0.252"
 alias rog="ssh root@192.168.0.200"
 alias zettle="nvim $HOME/Zettelkasten"
+alias lg="lazygit"
+alias lssh="lazyssh"
+alias lc="lazycontainer"
 # Aliases End
 
 # Local Bin PATH
@@ -108,7 +111,7 @@ fi
 unset __conda_setup
 # Conda End
 
-# # Rust Source
+# Rust Source
 if [[ ! "$OSTYPE" == "darwin"* ]] then
   export PATH=$HOME/.cargo/bin:$PATH
   . "$HOME/.cargo/env"
@@ -143,13 +146,3 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/myleshen/.lmstudio/bin"
-# End of LM Studio CLI section
-
-# Added by Antigravity
-export PATH="/Users/myleshen/.antigravity/antigravity/bin:$PATH"
-
-# Added by Antigravity
-export PATH="/Users/myleshen/.antigravity/antigravity/bin:$PATH"
